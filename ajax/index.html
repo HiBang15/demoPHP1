@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../js/jquery-1.4.2.min.js' type='text/javascript'></script>
+	<script type="text/javascript">
+		$(document).ready(
+			function(){
+				var r='';
+				var sCode = $('txtSearch').val();
+				$.ajax({
+					url:"ajax.php",
+					type:'POST',
+					data:(xx:"18XSMax"),
+					dataType:'json',
+					beforeSend:function(){
+						$('#info').html(
+							"<img src='ajax-loader.gif'/>"	
+						);
+					},
+					success:function(msg){
+						jLen = Object.length;
+
+						if(jLen>1){
+							for(x in msg){
+								r += "<li>"+<msg[x].SCode"</li><li>"+msg[x].sName+"</li>";
+							}
+							$("#info").html(r);
+						}else{
+							$('#info').text(msg.sName);
+						}
+					}
+				});
+			}
+			);
+	</script>
+</head>
+<body>
+	<div id="info">
+		<form method="POST">
+			<input type="text" name="txtSearch" value="" placeholder="Enter....."  />
+			<input type="button" name="btSearch" value="Search" />
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!-- BEGIN: LOGIN -->
+<head>
+	<title>Login-Project</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+</head>
+<body>
+	<div class="boxLogin">
+		<div class="welcome">
+			<h3></h3>
+		</div>
+		<div class="login">
+			<div class="head">
+				<h3>Login</h3>
+			</div>
+			<form method="POST" name=frmLogin">
+				<div class="user">
+					<!-- <a>User : </a> -->
+					<input id="user" type="text" name="txtEmail" value="{email}" placeholder="Enter your email!" />
+				</div>
+				<div class="password">
+					<!-- <a>Password :</a> -->
+					<input id="Password" type="password" name="txtPass" value="{pass}" placeholder="Enter the password!" />
+					<span class="loginn"name="mess_passWord">{mess}</span>
+				</div>
+				
+				<div class="reges">
+					<input id="subLogin" type="submit"  name="sbLogin" value="LOGIN"/>
+				</div>
+				<div class="forget">
+					<h5><a href="forgot.php">Forgot Password?</a></h5>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<!-- END: LOGIN -->
+<!-- <html>
+<head>
+	<title>LOGIN</title>
+</head>
+<body>
+	<div class="login">
+		<form method="POST" name="frmLogin">
+			<li><input type="text" name="txtEmail" value="" placeholder="Enter your email!" /></li>
+			<li><input type="password" name="txtPass"></li>
+			<input type="submit" name="sbLogin" value="Login" />
+		</form>
+	</div>
+</body>
+</html> -->

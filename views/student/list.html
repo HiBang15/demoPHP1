@@ -1,0 +1,102 @@
+ 	  <!--BEGIN:LIST-->
+<script>
+	function onDelete(_id){
+		if(confirm("Are you sure delete the info?")){
+			window.location.href="?m=student&a=delete&id="+_id;
+		}
+	};
+	function CheckAll(){
+		var ck = document.getElementsByName('ck[]');
+		var ckm = document.getElementById('mck');
+		if(ck.length>0){
+			if(ckm.checked == true){
+				for(i=0; i<ck.length; i++){
+					ck[i].checked = true;
+				}
+			}else{
+				for(i=0; i<ck.length; i++){
+					ck[i].checked = false;
+				}
+			}
+		}
+		
+	}
+	function onDelAll(){
+		var ck = document.getElementsByName('ck[]');
+		var frm = document.frmListing;
+		var f=0;
+		var arr = [];
+		if(ck.length>0){
+			for(i=0; i<ck.length; i++){
+				if(ck[i].checked === true){
+					f=1;
+					arr.push(ck[i].value);
+				}
+			}
+		}
+		if(f==0){
+			alert("Must be choose one item");
+			return false;
+		}else if(confirm("Are your sure delete recors")){
+			ls = ar.join(',');
+			frm.txtPost.value=ls;
+			frm.submit();
+		}
+	}
+	
+</script>
+<div class="acc">
+	
+
+	<form method="POST" name="frmListing">
+		<div class="search">
+			<input type='text' name='txtKeyword' value='{kw}' aria-placeholder="Enter any keyword" />
+			<input type='submit' name='btnSearch' value='Search' />
+		</div>
+		<h3> Danh sách thành viên</h3>
+		<table id="account">
+			<thead>
+				<tr>
+					
+					<th id="ID">Nbr</th>
+					<th id="fullname">Full Name</th>
+					<th id="email">Email</th>
+					<th id="phone">Phone number</th>
+					<th id="address">Address</th>
+					<th id="gender">Gender</th>
+					<th colspan="2">Action</th>
+					<th><input type='checkbox'  id="mck" value=''  onclick='CheckAll();' name="masterCheck" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<!-- BEGIN: LAP -->
+				<tr>
+					<td>{LAP.Nbr}</td>
+					<td>{LAP.fullname}</td>
+					<td>{LAP.email}</td>
+					<td>{LAP.phone}</td>
+					<td>{LAP.address}</td>
+					<td>{LAP.gender}</td>
+					<td><a href="?m=student&a=edit&id={LAP.id}">Edit</a></td>
+					<td><a href="javascript:void(0)" onclick='onDelete({LAP.id})'>Delete</a></td>
+					<td align="center"><input type='checkbox' value='{LAP.id}' name="ck[]"/></td>
+				</tr>
+				<!-- END: LAP -->
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="9" s>{pagers}</td>
+				</tr>
+			</tfoot>
+
+		</table>
+	
+		<input id="delete" type='button' name='btnDelete' value='Delete' onclick='onDelAll()' align='right' />
+		<input type='hidden' value='' name='txtPost' />
+
+	</form>
+	
+		
+</div>
+<!-- END:LIST-->
